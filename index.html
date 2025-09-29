@@ -8,50 +8,66 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body class="max-w-xl mx-auto min-h-dvh bg-gradient-to-b from-black via-sky-800 to-gray-800">
+<body class="bg-gradient-to-b from-black via-sky-800 to-gray-800 min-h-screen flex flex-col">
 
     <header class="text-white">
         <!-- <img src="assets/img/foto_perfil.jpg" alt="Jose Juan"
         class="h-150 w-full object-cover mask-radial-at-center mask-radial-from-50% mask-radial-to-70%"> -->
-        <section class="flex justify-center items-center">
+        <section class="flex justify-center items-center pt-8">
             <nav>
-                <ul class="flex gap-4">
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#sobre-mi">Sobre mí</a></li>
-                    <li><a href="#habilidades">Habilidades</a></li>
-                    <li><a href="#proyectos">Proyectos</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
+                <div class="hidden lg:flex lg:gap-x-12">
+                    <a href="#" class="text-sm/6 font-semibold text-white hover:scale-110 transition-transform duration-300">Incio</a>
+                    <a href="#" class="text-sm/6 font-semibold text-white hover:scale-110 transition-transform duration-300">Sobre mí</a>
+                    <a href="#" class="text-sm/6 font-semibold text-white hover:scale-110 transition-transform duration-300">Habilidades</a>
+                    <a href="#" class="text-sm/6 font-semibold text-white hover:scale-110 transition-transform duration-300">Proyectos</a>
+                </div>
             </nav>
         </section>
 
-        <section class="flex gap-4 justify-center items-center">
-            <a class="bg-white text-black p-2 size-12 rounded-full items-center justify-center flex hover:scale-110 transition-transform duration-300"
-                href="https://www.linkedin.com/in/jose-juan-dos-reis-40aa10262/" target="_blank">
-                <svg class="w-6 h-6 ">
-                    <use href="assets/sprite.svg#linkedin"></use>
-                </svg>
-            </a>
-            <a class="bg-gradient-to-tr from-yellow-300 via-pink-600 to-purple-600 text-black p-2 size-12 rounded-full items-center justify-center flex hover:bg-pink-500 hover:scale-110 transition-transform duration-300" href="https://www.instagram.com/dossrreiss/" target="_blank">
-                <svg class="w-6 h-6 ">
-                    <use href="assets/sprite.svg#instagram"></use>
-                </svg>
-            </a>
-            <a class="bg-gray-900 p-2 size-12 rounded-full items-center justify-center flex
-             hover:scale-110 transition-transform duration-300" href="https://github.com/CrankyJJ" target="_blank">
-                <svg class="w-6 h-6 ">
-                    <use href="assets/sprite.svg#github"></use>
-                </svg>
-            </a>
-            <a class="bg-black p-2 size-12 rounded-full items-center justify-center flex hover:scale-110 transition-transform duration-300"
-                href="https://x.com/" target="_blank">
-                <svg class="w-6 h-6 ">
-                    <use href="assets/sprite.svg#x"></use>
-                </svg>
-            </a>
-        </section>
     </header>
-    <footer>
+    <main class="flex-grow">
+        <div class="mt-20 flex flex-col items-center justify-center">
+            <div class="text-white text-center text-5xl font-semibold tracking-tight text-balance">
+                <h1 class="">Bienvenido a mi
+                    portafolio</h1>
+                <p class="mt-8 mb-8 text-lg font-medium text-pretty text-gray-400 sm:text-xl/8">Hola, soy Jose, un joven
+            </div>
+            <div>
+                <img src="assets/img/foto_perfil.jpg" alt="">
+            </div>
+            
+            <!-- Redes sociales -->
+            <div class="mt-10 flex items-center justify-center gap-x-6">
+                <a class="bg-white text-black p-2 size-12 rounded-full items-center justify-center flex hover:scale-110 transition-transform duration-300"
+                    href="https://www.linkedin.com/in/jose-juan-dos-reis-40aa10262/" target="_blank">
+                    <svg class="w-6 h-6 ">
+                        <use href="assets/sprite.svg#linkedin"></use>
+                    </svg>
+                </a>
+                <a class="bg-gradient-to-tr from-yellow-300 via-pink-600 to-purple-600 text-black p-2 size-12 rounded-full items-center justify-center flex hover:bg-pink-500 hover:scale-110 transition-transform duration-300"
+                    href="https://www.instagram.com/dossrreiss/" target="_blank">
+                    <svg class="w-6 h-6 ">
+                        <use href="assets/sprite.svg#instagram"></use>
+                    </svg>
+                </a>
+                <a class="bg-gray-900 p-2 size-12 rounded-full items-center justify-center flex
+                    hover:scale-110 transition-transform duration-300" href="https://github.com/CrankyJJ"
+                    target="_blank">
+                    <svg class="w-6 h-6 ">
+                        <use href="assets/sprite.svg#github"></use>
+                    </svg>
+                </a>
+                <a class="bg-black p-2 size-12 rounded-full items-center justify-center flex hover:scale-110 transition-transform duration-300"
+                    href="https://x.com/" target="_blank">
+                    <svg class="w-6 h-6 ">
+                        <use href="assets/sprite.svg#x"></use>
+                    </svg>
+                </a>
+
+            </div>
+        </div>
+    </main>
+    <footer class="text-white bg-gray-900 w-full text-center py-6 mt-20">
         <p>© 2025 Jose Juan Dos Reis De Conceicao. Todos los derechos reservados.</p>
     </footer>
 </body>
