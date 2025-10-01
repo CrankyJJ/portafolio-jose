@@ -40,6 +40,21 @@
             margin: 2rem auto;
             padding: 0 1rem;
         }
+
+        /* Estilos para los links del nav como botones al hacer hover */
+        /* nav a {
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), rgba(56, 189, 248, 0.3));
+            border: 1px solid rgba(125, 211, 252, 0.5);
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+            transform: translateY(-2px);
+        } */
     </style>
 </head>
 
@@ -50,10 +65,11 @@
     <div id="container" class="text-white">
         <!-- Header -->
         <!-- TODO: Mirar si quitar (inicio o sobre mí). -->
-        <header class="sticky top-0 z-50 bg-transparent backdrop-blur-sm shadow-lg">
+        <header class="sticky top-0 z-50 bg-transparent backdrop-blur-sm shadow-lg border-b-2 border-sky-300">
             <nav id="navbar" class="p-5">
                 <div class="flex justify-between items-center">
-                    <p id="MyName" class="text-xl text-white font-bold">Jose Juan Dos Reis De Conceicao</p>
+                    <p id="MyName" class="text-xl text-white font-bold">JJ<span class="text-sky-300">.dev</span>
+                    </p>
 
                     <!-- Botón hamburguesa (visible solo en móvil) -->
                     <button id="menu-toggle" class="md:hidden text-white focus:outline-none ml-auto">
@@ -320,10 +336,13 @@
                     <span>Git</span>
                 </div>
                 <div class="skill-card">
-                    <i class="devicon-vscode-plain colored"></i>
-                    <span>VS Code</span>
+                    <i class="devicon-tailwindcss-plain colored"></i>
+                    <span>Tailwind</span>
                 </div>
-
+                <div class="skill-card">
+                    <i class="devicon-bootstrap-plain colored"></i>
+                    <span>Bootstrap</span>
+                </div>
             </div>
         </section>
     </div>
