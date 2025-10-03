@@ -10,7 +10,7 @@ Este es el repositorio oficial de mi portafolio personal. El proyecto fue diseñ
 
 Este portafolio es un proyecto de desarrollo **Front-End estático**, enfocado en la usabilidad, el diseño *responsive* y el rendimiento.
 
-| Categoría | Tecnologías y Herramientas |
+| Categoría | Tecnologías y Herramientas Usadas |
 | :--- | :--- |
 | **Maquetación** | HTML5, CSS3 |
 | **Frameworks CSS** | **Tailwind CSS** (Utilidades, Diseño Responsive, Estilización) |
