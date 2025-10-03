@@ -42,20 +42,107 @@
         }
 
         /* Estilos para los links del nav como botones al hacer hover */
-        /* nav a {
-            position: relative;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            transition: all 0.3s ease;
+        /* Animaciones personalizadas */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        nav a:hover {
-            background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), rgba(56, 189, 248, 0.3));
-            border: 1px solid rgba(125, 211, 252, 0.5);
-            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
-            transform: translateY(-2px);
-        } */
-        /* From Uiverse.io by kat_2522 */
+        .animate-fade-in {
+            animation: fadeInDown 0.5s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+
+        /* Efecto de barrido en hover */
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(125, 211, 252, 0.15), transparent);
+            transition: left 0.5s ease;
+            z-index: -1;
+        }
+
+        .nav-link:hover::before {
+            left: 100%;
+        }
+
+        /* Línea inferior animada */
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #7dd3fc, #a78bfa);
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 80%;
+        }
+
+        /* Efecto de escala en el logo */
+        #MyName {
+            transition: transform 0.3s ease;
+        }
+
+        #MyName:hover {
+            transform: scale(1.05);
+        }
+
+        /* Línea bajo el logo */
+        #MyName::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: linear-gradient(90deg, #7dd3fc, #a78bfa);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        #MyName:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Animación del header en scroll */
+        header.scrolled {
+            background: rgba(56, 189, 248, 0.15);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Números de sección */
+        .section-number {
+            color: #7dd3fc;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-right: 0.5rem;
+        }
+        
         .loader {
             max-width: fit-content;
             color: rgb(242, 255, 240);
@@ -67,7 +154,7 @@
         }
 
         .loader span {
-            animation: cut 2s infinite;
+            animation: cut 4s infinite;
             transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
@@ -84,7 +171,7 @@
             background-color: #82ecff91;
             top: 0px;
             filter: blur(10px);
-            animation: scan 2s infinite;
+            animation: scan 4s infinite;
             left: 0;
             z-index: 0;
             transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -98,7 +185,7 @@
             border-radius: 4px;
             background-color: #82ecff91;
             top: 0px;
-            animation: scan 2s infinite;
+            animation: scan 4s infinite;
             left: 0;
             z-index: 1;
             filter: opacity(0.9);
@@ -156,15 +243,17 @@
 
     <div id="container" class="text-white">
         <!-- Header -->
-        <!-- TODO: Mirar si quitar (inicio o sobre mí). -->
-        <header class="sticky top-0 z-50 bg-transparent backdrop-blur-sm shadow-lg border-b-2 border-sky-300">
+        <header class="sticky top-0 z-50 bg-sky-400/10 backdrop-blur-sm shadow-lg border-b-2 border-sky-300 transition-all duration-300">
             <nav id="navbar" class="p-5">
                 <div class="flex justify-between items-center">
-                    <a href="#container"><p id="MyName" class="text-2xl text-white font-bold">JJ<span class="text-sky-300">.dev</span>
-                    </p></a>
-
+                    <a href="#container">
+                        <p id="MyName" class="text-2xl text-white font-bold relative">
+                            JJ<span class="text-sky-300">.dev</span>
+                        </p>
+                    </a>
+    
                     <!-- Botón hamburguesa (visible solo en móvil) -->
-                    <button id="menu-toggle" class="md:hidden text-white focus:outline-none ml-auto">
+                    <button id="menu-toggle" class="md:hidden text-white focus:outline-none ml-auto hover:text-sky-300 transition-colors">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4 6h16M4 12h16M4 18h16"></path>
@@ -172,28 +261,76 @@
                                 stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
                     </button>
-
+    
                     <!-- Menú desktop -->
-                    <ul class="hidden md:flex gap-4 items-center mr-30 space-x-5">
-                        <li><a href="#container" class="hover:text-sky-300 transition-colors">Sobre mí</a></li>
-                        <li><a href="#projects" class="hover:text-sky-300 transition-colors">Proyectos</a></li>
-                        <li><a href="#skills" class="hover:text-sky-300 transition-colors">Habilidades</a></li>
-                        <li><a href="#contact" class="hover:text-sky-300 transition-colors">Contacto</a></li>
+                    <ul class="hidden md:flex gap-2 items-center mr-30">
+                        <li class="opacity-0 animate-fade-in delay-1">
+                            <a href="#container" 
+                               data-section="container"
+                               class="active bg-sky-400/10 text-sky-300 nav-link block px-5 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
+                                <span class="section-number">01.</span>Sobre mí
+                            </a>
+                        </li>
+                        <li class="opacity-0 animate-fade-in delay-2">
+                            <a href="#projects" 
+                               data-section="projects"
+                               class="nav-link block px-5 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
+                                <span class="section-number">02.</span>Proyectos
+                            </a>
+                        </li>
+                        <li class="opacity-0 animate-fade-in delay-3">
+                            <a href="#skills" 
+                               data-section="skills"
+                               class="nav-link block px-5 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
+                                <span class="section-number">03.</span>Habilidades
+                            </a>
+                        </li>
+                        <li class="opacity-0 animate-fade-in delay-4">
+                            <a href="#contact" 
+                               data-section="contact"
+                               class="nav-link block px-5 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
+                                <span class="section-number">04.</span>Contacto
+                            </a>
+                        </li>
                     </ul>
                 </div>
-
+    
                 <!-- Menú móvil -->
-                <ul id="mobile-menu" class="hidden md:hidden flex-col gap-4 mt-4 pb-2">
-                    <li><a href="#container" class="block hover:text-sky-300 transition-colors">Sobre mí</a></li>
-                    <li><a href="#projects" class="block hover:text-sky-300 transition-colors">Proyectos</a></li>
-                    <li><a href="#skills" class="block hover:text-sky-300 transition-colors">Habilidades</a></li>
-                    <li><a href="#contact" class="block hover:text-sky-300 transition-colors">Contacto</a></li>
+                <ul id="mobile-menu" class="hidden md:hidden flex-col gap-2 mt-4 pb-2">
+                    <li>
+                        <a href="#container" 
+                           data-section="container"
+                           class="active bg-sky-400/10 text-sky-300 nav-link block px-4 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
+                            <span class="section-number">1.</span>Sobre mí
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#projects" 
+                           data-section="projects"
+                           class="nav-link block px-4 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
+                            <span class="section-number">02.</span>Proyectos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#skills" 
+                           data-section="skills"
+                           class="nav-link block px-4 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
+                            <span class="section-number">03.</span>Habilidades
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#contact" 
+                           data-section="contact"
+                           class="nav-link block px-4 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
+                            <span class="section-number">04.</span>Contacto
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </header>
 
         <!-- Hero Section -->
-        <section id="about" class="min-h-screen flex items-center justify-center px-4 py-20 md:py-0">
+        <section id="container" class="min-h-screen flex items-center justify-center px-4 py-20 md:py-0">
             <div class="max-w-6xl mx-auto w-full">
                 <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 lg:gap-16">
                     <!-- Imagen -->
@@ -320,7 +457,7 @@
                     <div
                         class="group bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 hover:border-sky-500 transition-all duration-300 hover:shadow-xl hover:shadow-sky-500/20 hover:-translate-y-2">
                         <div class="relative overflow-hidden aspect-video">
-                            <img src="./assets/img/proyecto2.png" alt="Proyecto 2"
+                            <img src="./assets/img/Work-In-Progress.png" alt="Proyecto 2"
                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-60">
@@ -333,8 +470,9 @@
                                 propósito del proyecto.
                             </p>
                             <div class="flex gap-2 mb-4 flex-wrap">
+                                <span class="px-3 py-1 bg-sky-500/20 text-sky-300 rounded-full text-sm">React</span>
+                                <span class="px-3 py-1 bg-sky-500/20 text-sky-300 rounded-full text-sm">Bootstrap</span>
                                 <span class="px-3 py-1 bg-sky-500/20 text-sky-300 rounded-full text-sm">PHP</span>
-                                <span class="px-3 py-1 bg-sky-500/20 text-sky-300 rounded-full text-sm">MySQL</span>
                             </div>
                             <div class="flex gap-3">
                                 <a href="#"
@@ -356,7 +494,7 @@
                     <div
                         class="group bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 hover:border-sky-500 transition-all duration-300 hover:shadow-xl hover:shadow-sky-500/20 hover:-translate-y-2">
                         <div class="relative overflow-hidden aspect-video">
-                            <img src="./assets/img/proyecto3.png" alt="Proyecto 3"
+                            <img src="./assets/img/Work-In-Progress.png" alt="Proyecto 3"
                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-60">
@@ -387,6 +525,7 @@
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </section>
@@ -499,35 +638,73 @@
     </footer>
 
     <script>
-        // Toggle menú móvil
+        const header = document.querySelector('header');
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         const menuIcon = document.getElementById('menu-icon');
         const closeIcon = document.getElementById('close-icon');
-        const myName = document.getElementById('MyName');
-        const nombreHero = document.getElementById('nombreHero');
-        const nombreHero2 = document.getElementById('nombreHero2');
+        const navLinks = document.querySelectorAll('.nav-link');
 
+        // Toggle menú móvil
         menuToggle.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
             mobileMenu.classList.toggle('flex');
             menuIcon.classList.toggle('hidden');
             closeIcon.classList.toggle('hidden');
-            myName.classList.toggle('hidden');
         });
 
-        // Cerrar menú al hacer click en un link
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
+        // Cerrar menú móvil al hacer click en un link
+        navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                mobileMenu.classList.remove('flex');
-                menuIcon.classList.remove('hidden');
-                closeIcon.classList.add('hidden');
+                if (window.innerWidth < 768) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                }
             });
         });
 
+        // Efecto scroll en header
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
 
+            // Resaltar sección activa
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active', 'bg-sky-400/10', 'text-sky-300');
+                if (link.getAttribute('data-section') === current) {
+                    link.classList.add('active', 'bg-sky-400/10', 'text-sky-300');
+                }
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
     </script>
 </body>
 
