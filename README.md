@@ -66,7 +66,7 @@ Si deseas clonar este repositorio para revisarlo o ejecutarlo en tu máquina loc
 Si tienes alguna pregunta, propuesta de colaboración o deseas discutir una oportunidad de empleo, no dudes en contactarme:
 
 * **LinkedIn:** [José Juan Dos Reis](https://www.linkedin.com/in/jose-juan-dos-reis-40aa10262/)
-* **Email:** [dosreisj445@gmail.com]
+* **Email:** dosreisj445@gmail.com
 
 ---
 
