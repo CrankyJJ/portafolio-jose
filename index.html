@@ -48,6 +48,7 @@
                 opacity: 0;
                 transform: translateY(-20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -58,10 +59,21 @@
             animation: fadeInDown 0.5s ease forwards;
         }
 
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
-        .delay-4 { animation-delay: 0.4s; }
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
 
         /* Efecto de barrido en hover */
         .nav-link {
@@ -142,7 +154,7 @@
             font-size: 0.875rem;
             margin-right: 0.5rem;
         }
-        
+
         .loader {
             max-width: fit-content;
             color: rgb(242, 255, 240);
@@ -237,8 +249,6 @@
     </style>
 </head>
 
-<!-- o to-gray-800 -->
-
 <body class="bg-gradient-to-b from-black via-sky-900 to-black min-h-screen flex flex-col">
 
     <div id="container" class="text-white">
@@ -251,9 +261,10 @@
                             JJ<span class="text-sky-300">.dev</span>
                         </p>
                     </a>
-    
+
                     <!-- Botón hamburguesa (visible solo en móvil) -->
-                    <button id="menu-toggle" class="md:hidden text-white focus:outline-none ml-auto hover:text-sky-300 transition-colors">
+                    <button id="menu-toggle"
+                        class="md:hidden text-white focus:outline-none ml-auto hover:text-sky-300 transition-colors">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4 6h16M4 12h16M4 18h16"></path>
@@ -261,67 +272,59 @@
                                 stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
                     </button>
-    
+
                     <!-- Menú desktop -->
                     <ul class="hidden md:flex gap-2 items-center mr-30">
                         <li class="opacity-0 animate-fade-in delay-1">
-                            <a href="#container" 
-                               data-section="container"
-                               class="active bg-sky-400/10 text-sky-300 nav-link block px-5 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
+                            <a href="#container" data-section="container"
+                                class="active bg-sky-400/10 text-sky-300 nav-link block px-5 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
                                 <span class="section-number">01.</span>Sobre mí
                             </a>
                         </li>
                         <li class="opacity-0 animate-fade-in delay-2">
-                            <a href="#projects" 
-                               data-section="projects"
-                               class="nav-link block px-5 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
+                            <a href="#projects" data-section="projects"
+                                class="nav-link block px-5 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
                                 <span class="section-number">02.</span>Proyectos
                             </a>
                         </li>
                         <li class="opacity-0 animate-fade-in delay-3">
-                            <a href="#skills" 
-                               data-section="skills"
-                               class="nav-link block px-5 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
+                            <a href="#skills" data-section="skills"
+                                class="nav-link block px-5 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
                                 <span class="section-number">03.</span>Habilidades
                             </a>
                         </li>
                         <li class="opacity-0 animate-fade-in delay-4">
-                            <a href="#contact" 
-                               data-section="contact"
-                               class="nav-link block px-5 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
+                            <a href="#contact" data-section="contact"
+                                class="nav-link block px-5 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
                                 <span class="section-number">04.</span>Contacto
                             </a>
                         </li>
                     </ul>
                 </div>
-    
+
                 <!-- Menú móvil -->
                 <ul id="mobile-menu" class="hidden md:hidden flex-col gap-2 mt-4 pb-2">
                     <li>
-                        <a href="#container" 
-                           data-section="container"
-                           class="active bg-sky-400/10 text-sky-300 nav-link block px-4 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
-                            <span class="section-number">1.</span>Sobre mí
+                        <a href="#container" data-section="container"
+                            class="active bg-sky-400/10 text-sky-300 nav-link block px-4 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
+                            <span class="section-number">01.</span>Sobre mí
                         </a>
                     </li>
                     <li>
-                        <a href="#projects" 
-                           data-section="projects"
-                           class="nav-link block px-4 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
+                        <a href="#projects" data-section="projects"
+                            class="nav-link block px-4 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
                             <span class="section-number">02.</span>Proyectos
                         </a>
                     </li>
                     <li>
-                        <a href="#skills" 
-                           data-section="skills"
-                           class="nav-link block px-4 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
+                        <a href="#skills" data-section="skills"
+                            class="nav-link block px-4 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
                             <span class="section-number">03.</span>Habilidades
                         </a>
                     </li>
                     <li>
-                        <a href="#contact" 
-                           data-section="contact"
-                           class="nav-link block px-4 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
+                        <a href="#contact" data-section="contact"
+                            class="nav-link block px-4 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
                             <span class="section-number">04.</span>Contacto
                         </a>
                     </li>
@@ -406,10 +409,10 @@
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-12">
                     <h2
-                        class="text-3xl md:text-4xl font-bold mb-4 mt-4 bg-gradient-to-r from-white to-sky-300 bg-clip-text text-transparent">
-                        Mis Proyectos
+                        class="text-3xl md:text-4xl font-bold mb-4 mt-7 bg-gradient-to-r from-white to-sky-300 bg-clip-text text-transparent">
+                        Proyectos Destacados
                     </h2>
-                    <p class="text-gray-400 text-lg">Algunos de los proyectos en los que he trabajado</p>
+                    <p class="text-gray-400 text-lg">Descubre cómo aplico mis habilidades para construir soluciones web funcionales.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -466,8 +469,8 @@
                         <div class="p-6">
                             <h3 class="text-xl font-bold text-white mb-3">Weather app</h3>
                             <p class="text-gray-400 mb-4 line-clamp-3">
-                                Descripción breve del proyecto 2. Aquí puedes explicar las tecnologías utilizadas y el
-                                propósito del proyecto.
+                                Aplicación del tiempo intuitiva que muestra el clima actual y pronóstico. Desarrollada
+                                con React para una interfaz dinámica, consumiendo una API externa para datos precisos.
                             </p>
                             <div class="flex gap-2 mb-4 flex-wrap">
                                 <span class="px-3 py-1 bg-sky-500/20 text-sky-300 rounded-full text-sm">React</span>
@@ -476,8 +479,8 @@
                             </div>
                             <div class="flex gap-3">
                                 <a href="#"
-                                    class="flex-1 px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-center font-medium transition-colors">
-                                    Ver Demo
+                                    class="flex-1 px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-lg text-center font-medium transition-colors">
+                                    Proyecto en curso...
                                 </a>
                                 <a href="#"
                                     class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors">
@@ -512,8 +515,8 @@
                             </div>
                             <div class="flex gap-3">
                                 <a href="#"
-                                    class="flex-1 px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-center font-medium transition-colors">
-                                    Ver Demo
+                                    class="flex-1 px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-lg text-center font-medium transition-colors">
+                                    Proyecto en curso...
                                 </a>
                                 <a href="#"
                                     class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors">
@@ -525,7 +528,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </section>
@@ -534,10 +537,11 @@
         <section id="skills" class="min-h-screen py-20 px-4">
             <div class="text-center mb-12">
                 <h2
-                    class="text-3xl md:text-4xl font-bold mb-4 mt-4 bg-gradient-to-r from-white to-sky-300 bg-clip-text text-transparent">
-                    Mis Habilidades
+                    class="text-3xl md:text-4xl font-bold mb-4 mt-7 bg-gradient-to-r from-white to-sky-300 bg-clip-text text-transparent">
+                    Skills & Stack Tecnológico
                 </h2>
-                <p class="text-gray-400 text-lg">Estas son las herramientas que utilizo en mis proyectos:</p>
+                <p class="text-gray-400 text-lg">Mi conjunto de habilidades y herramientas con las que construyo
+                    soluciones robustas.</p>
             </div>
             <div class="skills-grid">
                 <div class="skill-card">
@@ -552,10 +556,10 @@
                     <i class="devicon-css3-plain colored"></i>
                     <span>CSS</span>
                 </div>
-                <div class="skill-card">
+                <!-- <div class="skill-card">
                     <i class="devicon-bash-plain"></i>
                     <span>Bash</span>
-                </div>
+                </div> -->
                 <div class="skill-card">
                     <i class="devicon-github-plain "></i>
                     <span>GitHub</span>
@@ -588,10 +592,10 @@
                     <i class="devicon-react-original colored"></i>
                     <span>React</span>
                 </div>
-                <div class="skill-card">
+                <!-- <div class="skill-card">
                     <i class="devicon-vscode-plain colored"></i>
                     <span>VsCode</span>
-                </div>
+                </div> -->
                 <div class="skill-card">
                     <i class="devicon-wordpress-plain"></i>
                     <span>Wordpress</span>
@@ -604,36 +608,97 @@
 
             </div>
         </section>
+
+        <section id="contact" class="py-20 px-4">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2
+                        class="text-3xl md:text-4xl font-bold mb-4 mt-7 bg-gradient-to-r from-white to-sky-300 bg-clip-text text-transparent">
+                        ¿Hablamos de tu proyecto?
+                    </h2>
+                    <p class="text-gray-400 text-lg max-w-xl mx-auto">
+                        Estoy disponible para nuevas oportunidades. No dudes en usar el formulario, o contáctame en mis
+                        redes sociales.
+                    </p>
+                </div>
+
+                <form action="" class="max-w-xl mx-auto">
+                    <div class="flex flex-col gap-6">
+                        <input type="text" placeholder="Nombre"
+                            class="p-4 bg-gray-800 text-white border border-gray-700 rounded-lg 
+                                      focus:border-sky-300 focus:ring-1 focus:ring-sky-300 outline-none transition-colors duration-300">
+
+                        <input type="email" placeholder="Email"
+                            class="p-4 bg-gray-800 text-white border border-gray-700 rounded-lg 
+                                      focus:border-sky-300 focus:ring-1 focus:ring-sky-300 outline-none transition-colors duration-300">
+
+                        <textarea placeholder="Mensaje" rows="5"
+                            class="p-4 bg-gray-800 text-white border border-gray-700 rounded-lg 
+                                         focus:border-sky-300 focus:ring-1 focus:ring-sky-300 outline-none transition-colors duration-300"></textarea>
+                    </div>
+
+                    <button type="submit"
+                        class="mt-8 w-full px-6 py-3 bg-sky-600 hover:bg-sky-700 text-white 
+                                   font-bold rounded-lg transition-colors duration-300 shadow-lg shadow-sky-500/50 cursor-pointer">
+                        Enviar Mensaje
+                    </button>
+                </form>
+
+                <!-- <div class="mt-16 pt-8 border-t border-gray-700 flex items-center justify-center gap-x-8">
+                    <a class="p-3 rounded-full bg-gray-800 text-white hover:bg-sky-500 hover:text-white hover:scale-110 transition-all duration-300"
+                        href="https://www.linkedin.com/in/jose-juan-dos-reis-40aa10262/" target="_blank">
+                        <svg class="w-6 h-6 "><use href="assets/sprite.svg#linkedin"></use></svg>
+                    </a>
+                    
+                    <a class="p-3 rounded-full bg-gray-800 text-white hover:bg-sky-500 hover:text-white hover:scale-110 transition-all duration-300"
+                        href="https://www.instagram.com/dossrreiss/" target="_blank">
+                        <svg class="w-6 h-6 "><use href="assets/sprite.svg#instagram"></use></svg>
+                    </a>
+                    
+                    <a class="p-3 rounded-full bg-gray-800 text-white hover:bg-sky-500 hover:text-white hover:scale-110 transition-all duration-300" 
+                       href="https://github.com/CrankyJJ" target="_blank">
+                        <svg class="w-6 h-6 "><use href="assets/sprite.svg#github"></use></svg>
+                    </a>
+                    
+                    <a class="p-3 rounded-full bg-gray-800 text-white hover:bg-sky-500 hover:text-white hover:scale-110 transition-all duration-300"
+                        href="https://x.com/" target="_blank">
+                        <svg class="w-6 h-6 "><use href="assets/sprite.svg#x"></use></svg>
+                    </a>
+                </div> -->
+                <div class="mt-10 flex items-center justify-center gap-x-6">
+                    <a class="bg-white text-black p-2 size-12 rounded-full items-center justify-center flex hover:scale-110 transition-transform duration-300"
+                        href="https://www.linkedin.com/in/jose-juan-dos-reis-40aa10262/" target="_blank">
+                        <svg class="w-6 h-6 ">
+                            <use href="assets/sprite.svg#linkedin"></use>
+                        </svg>
+                    </a>
+                    <a class="bg-gradient-to-tr from-yellow-300 via-pink-600 to-purple-600 text-black p-2 size-12 rounded-full items-center justify-center flex hover:bg-pink-500 hover:scale-110 transition-transform duration-300"
+                        href="https://www.instagram.com/dossrreiss/" target="_blank">
+                        <svg class="w-6 h-6 ">
+                            <use href="assets/sprite.svg#instagram"></use>
+                        </svg>
+                    </a>
+                    <a class="bg-gray-900 p-2 size-12 rounded-full items-center justify-center flex
+                    hover:scale-110 transition-transform duration-300" href="https://github.com/CrankyJJ"
+                        target="_blank">
+                        <svg class="w-6 h-6 ">
+                            <use href="assets/sprite.svg#github"></use>
+                        </svg>
+                    </a>
+                    <!-- <a class="bg-black p-2 size-12 rounded-full items-center justify-center flex hover:scale-110 transition-transform duration-300"
+                        href="https://x.com/" target="_blank">
+                        <svg class="w-6 h-6 ">
+                            <use href="assets/sprite.svg#x"></use>
+                        </svg>
+                    </a> -->
+                </div>
+            </div>
+        </section>
     </div>
 
-    <footer class="text-white bg-gray-900 w-full text-center py-6 mt-6">
-        <div class="mt-10 flex items-center justify-center gap-x-6">
-            <a class="bg-white text-black p-2 size-12 rounded-full items-center justify-center flex hover:scale-110 transition-transform duration-300"
-                href="https://www.linkedin.com/in/jose-juan-dos-reis-40aa10262/" target="_blank">
-                <svg class="w-6 h-6 ">
-                    <use href="assets/sprite.svg#linkedin"></use>
-                </svg>
-            </a>
-            <a class="bg-gradient-to-tr from-yellow-300 via-pink-600 to-purple-600 text-black p-2 size-12 rounded-full items-center justify-center flex hover:bg-pink-500 hover:scale-110 transition-transform duration-300"
-                href="https://www.instagram.com/dossrreiss/" target="_blank">
-                <svg class="w-6 h-6 ">
-                    <use href="assets/sprite.svg#instagram"></use>
-                </svg>
-            </a>
-            <a class="bg-gray-900 p-2 size-12 rounded-full items-center justify-center flex
-            hover:scale-110 transition-transform duration-300" href="https://github.com/CrankyJJ" target="_blank">
-                <svg class="w-6 h-6 ">
-                    <use href="assets/sprite.svg#github"></use>
-                </svg>
-            </a>
-            <a class="bg-black p-2 size-12 rounded-full items-center justify-center flex hover:scale-110 transition-transform duration-300"
-                href="https://x.com/" target="_blank">
-                <svg class="w-6 h-6 ">
-                    <use href="assets/sprite.svg#x"></use>
-                </svg>
-            </a>
-        </div>
-        <p class="text-sm text-gray-400 mt-4">© 2025 Jose Juan Dos Reis De Conceicao. Todos los derechos reservados.</p>
+    <footer class="text-white bg-gray-900 w-full text-center py-6">
+
+        <p class="text-sm text-gray-400">© 2025 Jose Juan Dos Reis De Conceicao. Todos los derechos reservados.</p>
 
     </footer>
 
@@ -676,7 +741,7 @@
             // Resaltar sección activa
             let current = '';
             const sections = document.querySelectorAll('section');
-            
+
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 if (window.scrollY >= sectionTop - 200) {
