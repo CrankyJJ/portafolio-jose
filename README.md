@@ -70,4 +70,4 @@ Si tienes alguna pregunta, propuesta de colaboración o deseas discutir una opor
 
 ---
 
-**© 2024 José Juan Dos Reis De Conceicao**
+**© 2026 José Juan Dos Reis De Conceicao**
