@@ -471,7 +471,7 @@
                         <div class="p-6">
                             <h3 class="text-xl font-bold text-white mb-3">Task app</h3>
                             <p class="text-gray-400 mb-4 line-clamp-3">
-                                Aplicación web que permite gestionar tareas y recordatorios de forma eficiente, 
+                                Aplicación web que permite gestionar tareas y recordatorios de forma eficiente,
                                 con la capacidad de sincronizar los datos en tiempo real con Firebase.
                             </p>
                             <div class="flex gap-2 mb-4 flex-wrap">
@@ -635,12 +635,12 @@
                             class="p-4 bg-gray-800 text-white border border-gray-700 rounded-lg 
                                       focus:border-sky-300 focus:ring-1 focus:ring-sky-300 outline-none transition-colors duration-300">
 
-                        <textarea placeholder="Mensaje" rows="5"
+                        <textarea placeholder="message" rows="5"
                             class="p-4 bg-gray-800 text-white border border-gray-700 rounded-lg 
                                          focus:border-sky-300 focus:ring-1 focus:ring-sky-300 outline-none transition-colors duration-300"></textarea>
                     </div>
 
-                    <button type="submit"
+                    <button type="submit" id="submit-btn"
                         class="mt-8 w-full px-6 py-3 bg-sky-600 hover:bg-sky-700 text-white 
                                    font-bold rounded-lg transition-colors duration-300 shadow-lg shadow-sky-500/50 cursor-pointer">
                         Enviar Mensaje
@@ -706,6 +706,39 @@
         <p class="text-sm text-gray-400">© 2025 Jose Juan Dos Reis De Conceicao. Todos los derechos reservados.</p>
 
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function () {
+            emailjs.init("hKS31ZJNmsE3MiVgF");
+        })();
+
+        const form = document.getElementById("contact-form");
+        const button = document.getElementById("submit-btn");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            button.disabled = true;
+            button.innerText = "Enviando...";
+
+            emailjs.sendForm("service_fr5lapo", "template_cekmv6j", this)
+                .then(function () {
+                    button.innerText = "Mensaje enviado 🚀";
+                    form.reset();
+
+                    setTimeout(() => {
+                        button.disabled = false;
+                        button.innerText = "Enviar Mensaje";
+                    }, 3000);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    button.innerText = "Error 😢";
+                    button.disabled = false;
+                });
+        });
+    </script>
 
     <script>
         const header = document.querySelector('header');
