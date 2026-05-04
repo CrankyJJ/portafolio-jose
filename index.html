@@ -25,6 +25,15 @@
 
     <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W0B3MV58X0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-W0B3MV58X0');
+    </script>
 </head>
 
 <body>
@@ -570,7 +579,7 @@
                             <textarea id="message" name="message" class="form-textarea"
                                 placeholder="Cuéntame sobre tu proyecto..." required></textarea>
                         </div>
-                        <button type="submit" class="btn-submit">
+                        <button id="submit-btn" type="submit" class="btn-submit">
                             <i data-feather="send" style="width:16px;height:16px;"></i> Enviar Mensaje
                         </button>
                     </form>
@@ -630,8 +639,48 @@
     </footer>
 
     <script src="./assets/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
         feather.replace();
+    </script>
+    <script>
+        (function () {
+            if (typeof emailjs !== 'undefined') {
+                emailjs.init("hKS31ZJNmsE3MiVgF");
+            }
+        })();
+
+        window.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("contact-form");
+            const button = document.getElementById("submit-btn");
+
+            if (!form || !button || typeof emailjs === 'undefined') {
+                return;
+            }
+
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                button.disabled = true;
+                button.innerText = "Enviando...";
+
+                emailjs.sendForm("service_m52sylb", "template_w8tnivl", this)
+                    .then(function () {
+                        button.innerText = "Mensaje enviado 🚀";
+                        form.reset();
+
+                        setTimeout(() => {
+                            button.disabled = false;
+                            button.innerText = "Enviar Mensaje";
+                        }, 3000);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                        button.innerText = "Error 😢";
+                        button.disabled = false;
+                    });
+            });
+        });
     </script>
 </body>
 
