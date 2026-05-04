@@ -1,830 +1,636 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jose Juan Dos Reis De Conceicao - Portafolio</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
+    <title>JJ.dev | Desarrollador Web Full Stack</title>
+    <meta name="description"
+        content="Portfolio de Jose Juan Dos Reis De Conceicao — Desarrollador Web Full Stack especializado en Frontend y Backend. JavaScript, PHP, Java, React y más.">
+    <meta property="og:title" content="JJ.dev | Desarrollador Web Full Stack">
+    <meta property="og:description"
+        content="Construyendo aplicaciones web completas, bien arquitectadas y orientadas al usuario.">
+    <meta property="og:type" content="website">
 
-        .skill-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 0.5rem;
-            transition: transform 0.3s, background 0.3s;
-        }
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
-        .skill-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.15);
-        }
+    <!-- Styles -->
+    <link rel="stylesheet" href="./assets/css/style.css">
 
-        .skill-card i {
-            font-size: 4rem;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1.5rem;
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        /* Estilos para los links del nav como botones al hacer hover */
-        /* Animaciones personalizadas */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-fade-in {
-            animation: fadeInDown 0.5s ease forwards;
-        }
-
-        .delay-1 {
-            animation-delay: 0.1s;
-        }
-
-        .delay-2 {
-            animation-delay: 0.2s;
-        }
-
-        .delay-3 {
-            animation-delay: 0.3s;
-        }
-
-        .delay-4 {
-            animation-delay: 0.4s;
-        }
-
-        /* Efecto de barrido en hover */
-        .nav-link {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(125, 211, 252, 0.15), transparent);
-            transition: left 0.5s ease;
-            z-index: -1;
-        }
-
-        .nav-link:hover::before {
-            left: 100%;
-        }
-
-        /* Línea inferior animada */
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #7dd3fc, #a78bfa);
-            transform: translateX(-50%);
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 80%;
-        }
-
-        /* Efecto de escala en el logo */
-        #MyName {
-            transition: transform 0.3s ease;
-        }
-
-        #MyName:hover {
-            transform: scale(1.05);
-        }
-
-        /* Línea bajo el logo */
-        #MyName::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background: linear-gradient(90deg, #7dd3fc, #a78bfa);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        #MyName:hover::after {
-            transform: scaleX(1);
-        }
-
-        /* Animación del header en scroll */
-        header.scrolled {
-            background: rgba(56, 189, 248, 0.15);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Números de sección */
-        .section-number {
-            color: #7dd3fc;
-            font-weight: 600;
-            font-size: 0.875rem;
-            margin-right: 0.5rem;
-        }
-
-        .loader {
-            max-width: fit-content;
-            color: rgb(242, 255, 240);
-            font-size: 50px;
-            font-family: Mine;
-            position: relative;
-            font-style: italic;
-            font-weight: 600;
-        }
-
-        .loader span {
-            animation: cut 4s infinite;
-            transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .loader:hover {
-            color: #fcffdf;
-        }
-
-        .loader::after {
-            position: absolute;
-            content: "";
-            width: 100%;
-            height: 6px;
-            border-radius: 4px;
-            background-color: #82ecff91;
-            top: 0px;
-            filter: blur(10px);
-            animation: scan 4s infinite;
-            left: 0;
-            z-index: 0;
-            transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .loader::before {
-            position: absolute;
-            content: "";
-            width: 100%;
-            height: 5px;
-            border-radius: 4px;
-            background-color: #82ecff91;
-            top: 0px;
-            animation: scan 4s infinite;
-            left: 0;
-            z-index: 1;
-            filter: opacity(0.9);
-            transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        @keyframes scan {
-            0% {
-                top: 0px;
-            }
-
-            25% {
-                top: 54px;
-            }
-
-            50% {
-                top: 0px;
-            }
-
-            75% {
-                top: 54px;
-            }
-        }
-
-        @keyframes cut {
-            0% {
-                clip-path: inset(0 0 0 0);
-            }
-
-            25% {
-                clip-path: inset(100% 0 0 0);
-            }
-
-            50% {
-                clip-path: inset(0 0 100% 0);
-            }
-
-            75% {
-                clip-path: inset(0 0 0 0);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .loader {
-                font-size: 2.5rem;
-                max-width: none;
-            }
-        }
-    </style>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W0B3MV58X0"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-W0B3MV58X0');
-    </script>
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
 </head>
 
-<body class="bg-gradient-to-b from-black via-sky-900 to-black min-h-screen flex flex-col">
+<body>
+    <!-- Cursor Glow -->
+    <div class="cursor-glow"></div>
 
-    <div id="container" class="text-white">
-        <!-- Header -->
-        <header
-            class="sticky top-0 z-50 bg-sky-400/10 backdrop-blur-sm shadow-lg border-b-2 border-sky-300 transition-all duration-300">
-            <nav id="navbar" class="p-5">
-                <div class="flex justify-between items-center">
-                    <a href="#container">
-                        <p id="MyName" class="text-2xl text-white font-bold relative">
-                            JJ<span class="text-sky-300">.dev</span>
-                        </p>
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#hero" class="logo">JJ<span class="accent">.</span>dev</a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#about">Sobre mí</a></li>
+                <li><a href="#projects">Proyectos</a></li>
+                <li><a href="#experience">Experiencia</a></li>
+                <li><a href="#certifications">Certificaciones</a></li>
+                <li><a href="#skills">Tech Stack</a></li>
+                <li><a href="#contact">Contacto</a></li>
+                <li>
+                    <a style="width: 150px; height: 40px;" href="./CV_JJ_ESPAÑOL.pdf" download target="_blank"
+                        class="nav-cv-btn">
+
+                        <i data-feather="download" style="width:30px;height:14px;"></i>&nbsp;&nbsp;Descargar CV
+
                     </a>
+                </li>
+            </ul>
+            <div class="burger" id="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </div>
+    </nav>
 
-                    <!-- Botón hamburguesa (visible solo en móvil) -->
-                    <button id="menu-toggle"
-                        class="md:hidden text-white focus:outline-none ml-auto hover:text-sky-300 transition-colors">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16"></path>
-                            <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
+    <!-- ========== HERO ========== -->
+    <section class="hero-section section" id="hero">
+        <div class="hero-bg-grid"></div>
+        <div class="hero-content">
+            <!-- Avatar -->
+            <div class="hero-avatar fade-in">
+                <img src="./assets/img/fotoCV.png" alt="Jose Juan Dos Reis">
+            </div>
 
-                    <!-- Menú desktop -->
-                    <ul class="hidden md:flex gap-2 items-center mr-30">
-                        <li class="opacity-0 animate-fade-in delay-1">
-                            <a href="#container" data-section="container"
-                                class="active bg-sky-400/10 text-sky-300 nav-link block px-5 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
-                                <span class="section-number">1.</span>Sobre mí
-                            </a>
-                        </li>
-                        <li class="opacity-0 animate-fade-in delay-2">
-                            <a href="#projects" data-section="projects"
-                                class="nav-link block px-5 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
-                                <span class="section-number">2.</span>Proyectos
-                            </a>
-                        </li>
-                        <li class="opacity-0 animate-fade-in delay-3">
-                            <a href="#skills" data-section="skills"
-                                class="nav-link block px-5 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
-                                <span class="section-number">3.</span>Habilidades
-                            </a>
-                        </li>
-                        <li class="opacity-0 animate-fade-in delay-4">
-                            <a href="#contact" data-section="contact"
-                                class="nav-link block px-5 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
-                                <span class="section-number">4.</span>Contacto
-                            </a>
-                        </li>
-                    </ul>
+            <!-- Status -->
+            <div class="hero-status fade-in delay-1">
+                <span class="status-dot"></span>
+                Disponible para trabajar
+            </div>
+
+            <!-- Greeting -->
+            <p class="hero-greeting fade-in delay-2">Hola, soy</p>
+
+            <!-- Name -->
+            <h1 class="hero-name fade-in delay-2">
+                José Juan <span class="text-gradient">Dos Reis</span>
+            </h1>
+
+            <!-- Role with typed effect -->
+            <p class="hero-role fade-in delay-3">
+                Construyo aplicaciones web completas donde el <strong>frontend</strong> y el <strong>backend</strong>
+                trabajan juntos para crear productos útiles y escalables.
+            </p>
+
+            <!-- Tech Chips -->
+            <div class="hero-chips fade-in delay-4 stagger-children">
+                <span class="hero-chip">JavaScript</span>
+                <span class="hero-chip">React</span>
+                <span class="hero-chip">Python</span>
+                <span class="hero-chip">PHP</span>
+                <span class="hero-chip">Java</span>
+                <span class="hero-chip">MySQL</span>
+                <span class="hero-chip">REST APIs</span>
+                <span class="hero-chip">Docker</span>
+                <span class="hero-chip">Git</span>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="hero-buttons fade-in delay-5">
+                <a href="#projects" class="btn btn-primary">
+                    <i data-feather="code" style="width:18px;height:18px;"></i> Ver Proyectos
+                </a>
+                <a href="#contact" class="btn btn-outline">
+                    <i data-feather="send" style="width:18px;height:18px;"></i> Contactar
+                </a>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator fade-in delay-6">
+                <span>Scroll</span>
+                <i data-feather="chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label"><i data-feather="user" style="width:14px;height:14px;"></i> Sobre
+                    mí</span>
+                <h2 class="section-title">Conóceme un poco <span class="accent">más</span></h2>
+            </div>
+
+            <div class="about-content">
+                <div class="about-text fade-in-left">
+                    <p>Soy un desarrollador web fullstack con conocimientos en <span class="text-highlight">JavaScript,
+                            Python, PHP, Java y MySQL</span>.
+                        Me gusta crear aplicaciones útiles, bien organizadas y fáciles de usar.</p>
+
+                    <p>He desarrollado proyectos propios tanto en el frontend como en el backend, y disfruto aprendiendo
+                        cada día. Trabajo con herramientas como Git, VS Code, Docker y bases de datos como MySQL.</p>
+
+                    <p>Me considero una persona puntual, ordenada y con muchas ganas de seguir creciendo en este mundo.
+                        Estoy buscando oportunidades como <span class="text-highlight">desarrollador junior</span>,
+                        donde pueda aportar y seguir aprendiendo junto a un buen equipo.</p>
                 </div>
 
-                <!-- Menú móvil -->
-                <ul id="mobile-menu" class="hidden md:hidden flex-col gap-2 mt-4 pb-2">
-                    <li>
-                        <a href="#container" data-section="container"
-                            class="active bg-sky-400/10 text-sky-300 nav-link block px-4 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
-                            <span class="section-number">1.</span>Sobre mí
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#projects" data-section="projects"
-                            class="nav-link block px-4 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
-                            <span class="section-number">2.</span>Proyectos
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#skills" data-section="skills"
-                            class="nav-link block px-4 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
-                            <span class="section-number">3.</span>Habilidades
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#contact" data-section="contact"
-                            class="nav-link block px-4 py-3 rounded-lg hover:text-sky-300 hover:bg-sky-400/5 transition-all duration-300 relative">
-                            <span class="section-number">4.</span>Contacto
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-
-        <!-- Hero Section -->
-        <section id="container" class="min-h-screen flex items-center justify-center px-4 py-20 md:py-0">
-            <div class="max-w-6xl mx-auto w-full">
-                <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 lg:gap-16">
-                    <!-- Imagen -->
-                    <div class="w-full md:w-1/3 flex justify-center order-1 md:order-1">
-                        <div class="relative">
-                            <div
-                                class="absolute -inset-4 bg-gradient-to-r from-sky-400 to-purple-600 rounded-full blur-lg opacity-30 animate-pulse">
-                            </div>
-                            <img class="relative w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full object-cover border-4 border-sky-400 shadow-2xl"
-                                src="./assets/img/fotoCV.png" alt="Jose Juan Dos Reis">
-                        </div>
+                <div class="stats-grid fade-in-right stagger-children">
+                    <div class="stat-card">
+                        <div class="stat-icon">⚡</div>
+                        <div class="stat-label">Full Stack</div>
+                        <div class="stat-desc">Frontend + Backend</div>
                     </div>
-
-                    <!-- Contenido -->
-                    <div class="w-full md:w-2/3 flex flex-col gap-6 text-center md:text-left order-2 md:order-2">
-                        <div>
-                            <p class="text-sky-300 text-lg md:text-xl font-semibold">Hola, soy</p>
-                            <h1 id="nombreHero"
-                                class="loader text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-white to-sky-300 bg-clip-text text-transparent">
-                                <span>José Juan Dos Reis</span>
-                            </h1>
-                            <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold text-sky-200 mb-6">
-                                Desarrollador Web Fullstack
-                            </h2>
-                        </div>
-
-                        <div class="space-y-4 text-gray-300 text-base md:text-lg">
-                            <p>
-                                Soy un desarrollador web fullstack con conocimientos en <span
-                                    class="text-sky-300 font-semibold">JavaScript, PHP, Java y MySQL</span>.
-                                Me gusta crear aplicaciones útiles, bien organizadas y fáciles de usar.
-                            </p>
-
-                            <p>
-                                He desarrollado proyectos propios tanto en el frontend como en el backend, y disfruto
-                                aprendiendo
-                                cosas nuevas cada día. Trabajo con herramientas como Git, VS Code y bases de datos como
-                                MySQL.
-                            </p>
-
-                            <p>
-                                Me considero una persona puntual, ordenada y con muchas ganas de seguir creciendo en
-                                este mundo.
-                                Estoy buscando oportunidades como <span class="text-sky-300 font-semibold">desarrollador
-                                    junior</span>,
-                                donde pueda aportar y seguir aprendiendo junto a un buen equipo.
-                            </p>
-                        </div>
-
-                        <!-- CTA Buttons -->
-                        <div class="flex flex-col sm:flex-row gap-4 mt-6 justify-center md:justify-start">
-                            <a href="#projects"
-                                class="px-8 py-3 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-                                Ver Proyectos
-                            </a>
-                            <a href="./assets/pdf/Jose juan dos reis de conceicao.pdf" download
-                                class="px-8 py-3 bg-transparent border-2 border-sky-400 hover:bg-sky-400/10 text-sky-300 font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-                                </svg>
-                                Descargar CV
-                            </a>
-                        </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🗄️</div>
+                        <div class="stat-label">MySQL</div>
+                        <div class="stat-desc">Modelado de Datos</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🚀</div>
+                        <div class="stat-label">Producción</div>
+                        <div class="stat-desc">Experiencia Real</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🛠️</div>
+                        <div class="stat-label">Herramientas</div>
+                        <div class="stat-desc">Workflow Moderno</div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Sección Proyectos -->
-        <section id="projects" class="min-h-screen py-20 px-4">
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-12">
-                    <h2
-                        class="text-3xl md:text-4xl font-bold mb-4 mt-7 bg-gradient-to-r from-white to-sky-300 bg-clip-text text-transparent">
-                        Proyectos Destacados
-                    </h2>
-                    <p class="text-gray-400 text-lg">Descubre cómo aplico mis habilidades para construir soluciones web
-                        funcionales.</p>
-                </div>
+    <!-- ========== PROJECTS ========== -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label"><i data-feather="folder" style="width:14px;height:14px;"></i>
+                    Proyectos</span>
+                <h2 class="section-title">Proyectos <span class="accent">Destacados</span></h2>
+                <p class="section-subtitle">Aplicaciones que he diseñado, desarrollado y puesto en práctica.</p>
+            </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                    <!-- Proyecto 1 -->
-                    <div
-                        class="group bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 hover:border-sky-500 transition-all duration-300 hover:shadow-xl hover:shadow-sky-500/20 hover:-translate-y-2">
-                        <div class="relative overflow-hidden aspect-video">
-                            <img src="./assets/img/Proyecto_1.png" alt="Proyecto 1"
-                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-60">
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-white mb-3">Viral Challenge</h3>
-                            <p class="text-gray-400 mb-4 line-clamp-3">
-                                Proyecto de final de grado realizado en el que se desarrolla una plataforma web para
-                                gestionar y monitorear los desafíos virales junto a dos compañeros del grado para
-                                reforzar el trabajo en equipo.
-                            </p>
-                            <div class="flex gap-2 mb-4 flex-wrap">
-                                <span class="px-3 py-1 bg-sky-500/20 text-sky-300 rounded-full text-sm">Bootstrap</span>
-                                <span class="px-3 py-1 bg-sky-500/20 text-sky-300 rounded-full text-sm">MySQL</span>
-                                <span class="px-3 py-1 bg-sky-500/20 text-sky-300 rounded-full text-sm">PHP</span>
-                                <span
-                                    class="px-3 py-1 bg-sky-500/20 text-sky-300 rounded-full text-sm">JavaScript</span>
-                            </div>
-                            <div class="flex gap-3">
+            <div class="projects-grid">
+                <!-- Proyecto 1: Viral Challenge -->
+                <div class="project-card fade-in">
+
+                    <!-- Imagen preview izquierda -->
+                    <div class="project-preview">
+                        <img src="https://api.microlink.io/?url=https://www.psinnova.com/viralchallenge/login.php&screenshot=true&meta=false&embed=screenshot.url"
+                            alt="Preview Viral Challenge" class="project-img" />
+                    </div>
+
+                    <!-- Contenido derecha -->
+                    <div class="project-content">
+                        <div class="project-top">
+                            <span class="project-badge production">Producción</span>
+                            <div class="project-links">
                                 <a href="https://www.psinnova.com/viralchallenge/login.php" target="_blank"
-                                    class="flex-1 px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-center font-medium transition-colors">
-                                    Ver Demo
-                                </a>
-                                <a href="https://github.com/hugocarni/VIRAL-CHALLENGE" target="_blank"
-                                    class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                                    </svg>
+                                    class="project-link" title="Ver Demo">
+                                    <i data-feather="external-link"></i>
                                 </a>
                             </div>
+                        </div>
+                        <h3 class="project-title">Viral Challenge</h3>
+                        <p class="project-desc">Plataforma web para gestionar y monitorear desafíos virales. Proyecto de
+                            final de grado realizado en equipo con backend en PHP, base de datos MySQL y frontend
+                            responsive.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">PHP</span>
+                            <span class="project-tag">MySQL</span>
+                            <span class="project-tag">HTML5</span>
+                            <span class="project-tag">CSS3</span>
+                            <span class="project-tag">JavaScript</span>
                         </div>
                     </div>
 
-                    <!-- Proyecto 2 -->
-                    <div
-                        class="group bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 hover:border-sky-500 transition-all duration-300 hover:shadow-xl hover:shadow-sky-500/20 hover:-translate-y-2">
-                        <div class="relative overflow-hidden aspect-video">
-                            <img src="./assets/img/car-marketplace.png" alt="Proyecto 2"
-                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-60">
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-white mb-3">Ai Car Marketplace</h3>
-                            <p class="text-gray-400 mb-4 line-clamp-3">
-                                Aplicación web que permite buscar vehículos de segunda mano con inteligencia artificial
-                                y publicar anuncios.
-                            </p>
-                            <div class="flex gap-2 mb-4 flex-wrap">
-                                <span class="px-3 py-1 bg-sky-500/20 text-sky-300 rounded-full text-sm">React</span>
-                                <span class="px-3 py-1 bg-sky-500/20 text-sky-300 rounded-full text-sm">Node.js</span>
-                                <span class="px-3 py-1 bg-sky-500/20 text-sky-300 rounded-full text-sm">Tailwind
-                                    CSS</span>
-                                <span
-                                    class="px-3 py-1 bg-sky-500/20 text-sky-300 rounded-full text-sm">TypeScript</span>
-                            </div>
-                            <div class="flex gap-3">
-                                <a href="#" target="_blank" disabled
-                                    class="flex-1 px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-center font-medium transition-colors">
-                                    Ver proyecto en github ->
-                                </a>
-                                <a href="https://github.com/CrankyJJ/car-ai-marketplace" target="_blank"
-                                    class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
+                </div>
+
+                <!-- Proyecto 2: Smart - Recruit -->
+                <div class="project-card fade-in">
+
+                    <!-- Imagen preview izquierda -->
+                    <div class="project-preview">
+                        <img src="./assets/img/smart-recruit.png"
+                            alt="Preview Viral Challenge" class="project-img" />
                     </div>
-                    <!-- Proyecto 3 -->
-                    <div
-                        class="group bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 hover:border-sky-500 transition-all duration-300 hover:shadow-xl hover:shadow-sky-500/20 hover:-translate-y-2">
-                        <div class="relative overflow-hidden aspect-video">
-                            <img src="./assets/img/Work-In-Progress.png" alt="Proyecto 2"
-                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-60">
+
+                    <!-- Contenido derecha -->
+                    <div class="project-content">
+                        <div class="project-top">
+                            <span class="project-badge production">Producción</span>
+                            <div class="project-links">
+                                <a href="" target="_blank"
+                                    class="project-link" title="Ver Demo">
+                                    <i data-feather="external-link"></i>
+                                </a>
                             </div>
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-white mb-3">Task App</h3>
-                            <p class="text-gray-400 mb-4 line-clamp-3">
-                                Aplicación de gestión de tareas con sistema de autenticación, CRUD de tareas y
-                                persistencia en localStorage. Construida con React y Tailwind CSS para una interfaz
-                                moderna y responsiva.
-                            </p>
-                            <div class="flex gap-2 mb-4 flex-wrap">
-                                <span class="px-3 py-1 bg-sky-500/20 text-sky-300 rounded-full text-sm">React</span>
-                                <span class="px-3 py-1 bg-sky-500/20 text-sky-300 rounded-full text-sm">Bootstrap</span>
-                                <span class="px-3 py-1 bg-sky-500/20 text-sky-300 rounded-full text-sm">PHP</span>
-                            </div>
-                            <div class="flex gap-3">
-                                <a href="https://gestor-de-tareas-861af.firebaseapp.com/" target="_blank"
-                                    class="flex-1 px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-lg text-center font-medium transition-colors">
-                                    Proyecto en curso...
-                                </a>
-                                <a href="https://github.com/CrankyJJ/gestor-de-tareas" target="_blank"
-                                    class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                                    </svg>
-                                </a>
-                            </div>
+                        <h3 class="project-title">Smart - Recruit</h3>
+                        <p class="project-desc">Plataforma web para analizar y optimizar tu cv para ofertas especificas copiando los requisitos de la oferta laboral.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Next.js</span>
+                            <span class="project-tag">Supabase</span>
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">Tailwind CSS</span>
+                            <span class="project-tag">TypeScript</span>
                         </div>
                     </div>
 
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Habilidades -->
-        <section id="skills" class="min-h-screen py-20 px-4">
-            <div class="text-center mb-12">
-                <h2
-                    class="text-3xl md:text-4xl font-bold mb-4 mt-7 bg-gradient-to-r from-white to-sky-300 bg-clip-text text-transparent">
-                    Skills & Stack Tecnológico
-                </h2>
-                <p class="text-gray-400 text-lg">Mi conjunto de habilidades y herramientas con las que construyo
-                    soluciones robustas.</p>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <i class="devicon-javascript-plain colored"></i>
-                    <span>JavaScript</span>
-                </div>
-                <div class="skill-card">
-                    <i class="devicon-html5-plain colored"></i>
-                    <span>HTML</span>
-                </div>
-                <div class="skill-card">
-                    <i class="devicon-css3-plain colored"></i>
-                    <span>CSS</span>
-                </div>
-                <!-- <div class="skill-card">
-                    <i class="devicon-bash-plain"></i>
-                    <span>Bash</span>
-                </div> -->
-                <div class="skill-card">
-                    <i class="devicon-github-plain "></i>
-                    <span>GitHub</span>
-                </div>
-                <div class="skill-card">
-                    <i class="devicon-mysql-plain colored"></i>
-                    <span>MySQL</span>
-                </div>
-                <div class="skill-card">
-                    <i class="devicon-php-plain colored"></i>
-                    <span>PHP</span>
-                </div>
-                <div class="skill-card">
-                    <i class="devicon-java-plain colored"></i>
-                    <span>Java</span>
-                </div>
-                <div class="skill-card">
-                    <i class="devicon-git-plain colored"></i>
-                    <span>Git</span>
-                </div>
-                <div class="skill-card">
-                    <i class="devicon-tailwindcss-plain colored"></i>
-                    <span>Tailwind</span>
-                </div>
-                <div class="skill-card">
-                    <i class="devicon-bootstrap-plain colored"></i>
-                    <span>Bootstrap</span>
-                </div>
-                <div class="skill-card">
-                    <i class="devicon-react-original colored"></i>
-                    <span>React</span>
-                </div>
-                <!-- <div class="skill-card">
-                    <i class="devicon-vscode-plain colored"></i>
-                    <span>VsCode</span>
-                </div> -->
-                <div class="skill-card">
-                    <i class="devicon-wordpress-plain"></i>
-                    <span>Wordpress</span>
-                </div>
-                <div class="skill-card">
-                    <i class="devicon-figma-plain colored"></i>
-                    <span>Firebase</span>
-                </div>
-                <div class="skill-card">
-                    <i class="devicon-nodejs-plain colored"></i>
-                    <span>Node.js</span>
                 </div>
 
+                <!-- Proyecto 3: Weather App -->
+                <div class="project-card fade-in">
 
-            </div>
-        </section>
-
-        <section id="contact" class="py-20 px-4">
-            <div class="max-w-3xl mx-auto">
-                <div class="text-center mb-12">
-                    <h2
-                        class="text-3xl md:text-4xl font-bold mb-4 mt-7 bg-gradient-to-r from-white to-sky-300 bg-clip-text text-transparent">
-                        ¿Hablamos de tu proyecto?
-                    </h2>
-                    <p class="text-gray-400 text-lg max-w-xl mx-auto">
-                        Estoy disponible para nuevas oportunidades. No dudes en usar el formulario, o contáctame en mis
-                        redes sociales.
-                    </p>
-                </div>
-
-                <form id="contact-form" class="max-w-xl mx-auto">
-                    <div class="flex flex-col gap-6">
-                        <input type="text" placeholder="Nombre" name="user_name" required
-                            class="p-4 bg-gray-800 text-white border border-gray-700 rounded-lg 
-                                      focus:border-sky-300 focus:ring-1 focus:ring-sky-300 outline-none transition-colors duration-300">
-
-                        <input type="email" placeholder="Email" name="user_email" required
-                            class="p-4 bg-gray-800 text-white border border-gray-700 rounded-lg 
-                                      focus:border-sky-300 focus:ring-1 focus:ring-sky-300 outline-none transition-colors duration-300">
-
-                        <textarea placeholder="Mensaje" rows="5" name="message"
-                            class="p-4 bg-gray-800 text-white border border-gray-700 rounded-lg 
-                                         focus:border-sky-300 focus:ring-1 focus:ring-sky-300 outline-none transition-colors duration-300"></textarea>
+                    <!-- Imagen preview izquierda -->
+                    <div class="project-preview">
+                        <img src="https://api.microlink.io/?url=https://www.psinnova.com/viralchallenge/login.php&screenshot=true&meta=false&embed=screenshot.url"
+                            alt="Preview Viral Challenge" class="project-img" />
                     </div>
 
-                    <button type="submit" id="submit-btn"
-                        class="mt-8 w-full px-6 py-3 bg-sky-600 hover:bg-sky-700 text-white 
-                                   font-bold rounded-lg transition-colors duration-300 shadow-lg shadow-sky-500/50 cursor-pointer">
-                        Enviar Mensaje
-                    </button>
+                    <!-- Contenido derecha -->
+                    <div class="project-content">
+                        <div class="project-top">
+                            <span class="project-badge in-progress">En desarrollo</span>
+                            <div class="project-links">
+                                <a href="https://www.psinnova.com/viralchallenge/login.php" target="_blank"
+                                    class="project-link" title="Ver Demo">
+                                    <i data-feather="external-link"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="project-title">Viral Challenge</h3>
+                        <p class="project-desc">Plataforma web para gestionar y monitorear desafíos virales. Proyecto de
+                            final de grado realizado en equipo con backend en PHP, base de datos MySQL y frontend
+                            responsive.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">PHP</span>
+                            <span class="project-tag">MySQL</span>
+                            <span class="project-tag">HTML5</span>
+                            <span class="project-tag">CSS3</span>
+                            <span class="project-tag">JavaScript</span>
+                        </div>
+                    </div>
 
-                    <hr class="mt-8 border-gray-700">
-                </form>
-
-                <!-- <div class="mt-16 pt-8 border-t border-gray-700 flex items-center justify-center gap-x-8">
-                    <a class="p-3 rounded-full bg-gray-800 text-white hover:bg-sky-500 hover:text-white hover:scale-110 transition-all duration-300"
-                        href="https://www.linkedin.com/in/jose-juan-dos-reis-40aa10262/" target="_blank">
-                        <svg class="w-6 h-6 "><use href="assets/sprite.svg#linkedin"></use></svg>
-                    </a>
-                    
-                    <a class="p-3 rounded-full bg-gray-800 text-white hover:bg-sky-500 hover:text-white hover:scale-110 transition-all duration-300"
-                        href="https://www.instagram.com/dossrreiss/" target="_blank">
-                        <svg class="w-6 h-6 "><use href="assets/sprite.svg#instagram"></use></svg>
-                    </a>
-                    
-                    <a class="p-3 rounded-full bg-gray-800 text-white hover:bg-sky-500 hover:text-white hover:scale-110 transition-all duration-300" 
-                       href="https://github.com/CrankyJJ" target="_blank">
-                        <svg class="w-6 h-6 "><use href="assets/sprite.svg#github"></use></svg>
-                    </a>
-                    
-                    <a class="p-3 rounded-full bg-gray-800 text-white hover:bg-sky-500 hover:text-white hover:scale-110 transition-all duration-300"
-                        href="https://x.com/" target="_blank">
-                        <svg class="w-6 h-6 "><use href="assets/sprite.svg#x"></use></svg>
-                    </a>
-                </div> -->
-                <div class="mt-4 flex items-center justify-center gap-x-6">
-                    <a class="bg-white text-black p-2 size-12 rounded-full items-center justify-center flex hover:scale-110 transition-transform duration-300"
-                        href="https://www.linkedin.com/in/jose-juan-dos-reis-40aa10262/" target="_blank">
-                        <svg class="w-6 h-6 ">
-                            <use href="assets/sprite.svg#linkedin"></use>
-                        </svg>
-                    </a>
-                    <a class="bg-gradient-to-tr from-yellow-300 via-pink-600 to-purple-600 text-black p-2 size-12 rounded-full items-center justify-center flex hover:bg-pink-500 hover:scale-110 transition-transform duration-300"
-                        href="https://www.instagram.com/dossrreiss/" target="_blank">
-                        <svg class="w-6 h-6 ">
-                            <use href="assets/sprite.svg#instagram"></use>
-                        </svg>
-                    </a>
-                    <a class="bg-gray-900 p-2 size-12 rounded-full items-center justify-center flex
-                    hover:scale-110 transition-transform duration-300" href="https://github.com/CrankyJJ"
-                        target="_blank">
-                        <svg class="w-6 h-6 ">
-                            <use href="assets/sprite.svg#github"></use>
-                        </svg>
-                    </a>
-                    <!-- <a class="bg-black p-2 size-12 rounded-full items-center justify-center flex hover:scale-110 transition-transform duration-300"
-                        href="https://x.com/" target="_blank">
-                        <svg class="w-6 h-6 ">
-                            <use href="assets/sprite.svg#x"></use>
-                        </svg>
-                    </a> -->
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
-    <footer class="text-white bg-gray-900 w-full text-center py-6">
+    <!-- ========== EXPERIENCE & EDUCATION ========== -->
+    <section id="experience" class="section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label"><i data-feather="briefcase" style="width:14px;height:14px;"></i>
+                    Trayectoria</span>
+                <h2 class="section-title">Experiencia & <span class="accent">Educación</span></h2>
+            </div>
 
-        <p class="text-sm text-gray-400">© 2025 Jose Juan Dos Reis De Conceicao. Todos los derechos reservados.</p>
+            <!-- Timeline -->
+            <div class="timeline">
+                <!-- Job 1 -->
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Marzo 2025 – Junio 2025</div>
+                    <div class="timeline-content">
+                        <h3>Desarrollador Web</h3>
+                        <h4>JUST GAME S.L. — Madrid</h4>
+                        <ul>
+                            <li>Implementé la maquetación Frontend con HTML5, CSS3 y jQuery, asegurando compatibilidad
+                                cross-browser.</li>
+                            <li>Desarrollé la lógica Backend utilizando PHP y administrando bases de datos MySQL.</li>
+                            <li>Mantuve y actualicé sitios web de clientes, mejorando funcionalidad y rendimiento.</li>
+                        </ul>
+                    </div>
+                </div>
 
+                <!-- Job 2 -->
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Marzo 2023 – Junio 2023</div>
+                    <div class="timeline-content">
+                        <h3>Atención y Tratamiento de Reclamaciones</h3>
+                        <h4>Elecnor Servicios y Proyectos SAU — Madrid</h4>
+                        <ul>
+                            <li>Gestioné la documentación de Prevención de Riesgos Laborales (PRL).</li>
+                            <li>Apoyé la migración de clientes y servicios desde tecnologías obsoletas hacia soluciones
+                                5G, garantizando continuidad del servicio.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="education-grid fade-in">
+                <div class="education-card">
+                    <div class="edu-icon">🎓</div>
+                    <h3>Grado Superior en Desarrollo de Aplicaciones Web (DAW)</h3>
+                    <p class="school">IES Gabriel García Márquez</p>
+                    <p class="date">2023 – 2025</p>
+                </div>
+                <div class="education-card">
+                    <div class="edu-icon">💻</div>
+                    <h3>Grado Medio en Sistemas Microinformáticos y Redes</h3>
+                    <p class="school">IES Laguna De Joztel</p>
+                    <p class="date">2021 – 2023</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CERTIFICATIONS ========== -->
+    <section id="certifications" class="section certifications-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label"><i data-feather="award" style="width:14px;height:14px;"></i>
+                    Certificaciones</span>
+                <h2 class="section-title">Certificaciones <span class="accent">Profesionales</span></h2>
+                <p class="section-subtitle">Credenciales verificadas que avalan mis competencias técnicas.</p>
+            </div>
+
+            <div class="certifications-grid">
+                <!-- Cisco Data Science -->
+                <div class="certification-card fade-in">
+                    <div class="cert-badge-container">
+                        <div class="cert-badge-glow"></div>
+                        <div class="cert-issuer-icon">
+                            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="cert-content">
+                        <div class="cert-header">
+                            <h3 class="cert-title">Data Science Essentials With Python</h3>
+                            <span class="cert-verified-badge">
+                                <i data-feather="check-circle" style="width:14px;height:14px;"></i>
+                                Verified
+                            </span>
+                        </div>
+                        <p class="cert-issuer">Emitido por <strong>Cisco Networking Academy</strong></p>
+                        <p class="cert-description">Uso de Python y librerías de la industria (Pandas, Matplotlib) para
+                            explorar, visualizar y modelar datos. Pensamiento analítico aplicado e insights comunicados
+                            a través de proyectos guiados.</p>
+                        <div class="cert-skills">
+                            <span class="cert-skill">Python</span>
+                            <span class="cert-skill">Pandas</span>
+                            <span class="cert-skill">Matplotlib</span>
+                            <span class="cert-skill">Data Visualization</span>
+                            <span class="cert-skill">Data Cleaning</span>
+                            <span class="cert-skill">Exploratory Data Analysis</span>
+                            <span class="cert-skill">Linear Regression</span>
+                            <span class="cert-skill">Jupyter Notebook</span>
+                        </div>
+                        <div class="cert-meta">
+                            <span class="cert-level"><i data-feather="layers" style="width:13px;height:13px;"></i>
+                                Foundational</span>
+                            <span class="cert-type"><i data-feather="book-open" style="width:13px;height:13px;"></i>
+                                Learning</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TECH STACK ========== -->
+    <section id="skills" class="section tech-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label"><i data-feather="cpu" style="width:14px;height:14px;"></i> Tech
+                    Stack</span>
+                <h2 class="section-title">Tecnologías con las que <span class="accent">trabajo</span></h2>
+                <p class="section-subtitle">Herramientas principales que utilizo para construir aplicaciones web
+                    completas.</p>
+            </div>
+
+            <div class="tech-grid">
+                <!-- Frontend -->
+                <div class="tech-category fade-in">
+                    <div class="tech-category-header">
+                        <div class="tech-category-icon frontend">🎨</div>
+                        <span class="tech-category-name">Frontend</span>
+                    </div>
+                    <div class="tech-pills stagger-children">
+                        <span class="tech-pill">React</span>
+                        <span class="tech-pill">JavaScript</span>
+                        <span class="tech-pill">HTML5</span>
+                        <span class="tech-pill">CSS3</span>
+                        <span class="tech-pill">Tailwind CSS</span>
+                        <span class="tech-pill">jQuery</span>
+                    </div>
+                </div>
+
+                <!-- Backend -->
+                <div class="tech-category fade-in">
+                    <div class="tech-category-header">
+                        <div class="tech-category-icon backend">⚙️</div>
+                        <span class="tech-category-name">Backend</span>
+                    </div>
+                    <div class="tech-pills stagger-children">
+                        <span class="tech-pill">Java</span>
+                        <span class="tech-pill">PHP</span>
+                        <span class="tech-pill">Python</span>
+                        <span class="tech-pill">REST APIs</span>
+                    </div>
+                </div>
+
+                <!-- Data Science -->
+                <div class="tech-category fade-in">
+                    <div class="tech-category-header">
+                        <div class="tech-category-icon datascience">📊</div>
+                        <span class="tech-category-name">Data Science</span>
+                    </div>
+                    <div class="tech-pills stagger-children">
+                        <span class="tech-pill">Pandas</span>
+                        <span class="tech-pill">Matplotlib</span>
+                        <span class="tech-pill">NumPy</span>
+                        <span class="tech-pill">Jupyter Notebook</span>
+                        <span class="tech-pill">Data Visualization</span>
+                    </div>
+                </div>
+
+                <!-- Data & DevOps -->
+                <div class="tech-category fade-in">
+                    <div class="tech-category-header">
+                        <div class="tech-category-icon data">🗄️</div>
+                        <span class="tech-category-name">Data & DevOps</span>
+                    </div>
+                    <div class="tech-pills stagger-children">
+                        <span class="tech-pill">MySQL</span>
+                        <span class="tech-pill">Docker</span>
+                        <span class="tech-pill">Firebase</span>
+                        <span class="tech-pill">Git</span>
+                    </div>
+                </div>
+
+                <!-- Tools -->
+                <div class="tech-category fade-in">
+                    <div class="tech-category-header">
+                        <div class="tech-category-icon tools">🧩</div>
+                        <span class="tech-category-name">Tools & Methods</span>
+                    </div>
+                    <div class="tech-pills stagger-children">
+                        <span class="tech-pill">Agile / Scrum</span>
+                        <span class="tech-pill">Postman</span>
+                        <span class="tech-pill">JUnit</span>
+                        <span class="tech-pill">GitHub / GitLab</span>
+                        <span class="tech-pill">Copilot</span>
+                    </div>
+                </div>
+
+                <!-- Languages -->
+                <div class="tech-category fade-in">
+                    <div class="tech-category-header">
+                        <div class="tech-category-icon languages">🌐</div>
+                        <span class="tech-category-name">Idiomas</span>
+                    </div>
+                    <div class="tech-pills stagger-children">
+                        <span class="tech-pill">Español (Nativo)</span>
+                        <span class="tech-pill">Inglés (Intermedio)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label"><i data-feather="mail" style="width:14px;height:14px;"></i>
+                    Contacto</span>
+                <h2 class="section-title">Hablemos de tu <span class="accent">proyecto</span></h2>
+                <p class="section-subtitle">¿Tienes un proyecto en mente o quieres charlar? ¡Contáctame! Respuesta
+                    garantizada en menos de 24h.</p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Contact Info -->
+                <div class="contact-info fade-in-left">
+                    <p class="contact-intro">Si estás interesado en trabajar juntos, rellena el formulario o escríbeme
+                        directamente. Siempre estoy abierto a nuevas oportunidades y colaboraciones.</p>
+
+                    <a href="mailto:dosreisj445@gmail.com" class="contact-card">
+                        <div class="contact-card-icon">
+                            <i data-feather="mail"></i>
+                        </div>
+                        <div>
+                            <div class="contact-card-label">Escríbeme</div>
+                            <div class="contact-card-value">dosreisj445@gmail.com</div>
+                        </div>
+                    </a>
+
+                    <a href="tel:+34605422486" class="contact-card">
+                        <div class="contact-card-icon">
+                            <i data-feather="phone"></i>
+                        </div>
+                        <div>
+                            <div class="contact-card-label">Teléfono</div>
+                            <div class="contact-card-value">+34 605 42 24 86</div>
+                        </div>
+                    </a>
+
+                    <div class="contact-card">
+                        <div class="contact-card-icon">
+                            <i data-feather="map-pin"></i>
+                        </div>
+                        <div>
+                            <div class="contact-card-label">Ubicación</div>
+                            <div class="contact-card-value">Madrid, España</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-wrapper fade-in-right">
+                    <form class="contact-form" id="contact-form" action="mailto:dosreisj445@gmail.com" method="post"
+                        enctype="text/plain">
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="Tu nombre"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="tu@email.com"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" name="message" class="form-textarea"
+                                placeholder="Cuéntame sobre tu proyecto..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">
+                            <i data-feather="send" style="width:16px;height:16px;"></i> Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Brand -->
+                <div class="footer-brand">
+                    <span class="logo">JJ<span class="accent">.</span>dev</span>
+                    <p>Desarrollador Web Full Stack enfocado en construir aplicaciones completas, bien arquitectadas y
+                        orientadas al usuario.</p>
+                </div>
+
+                <!-- Navigation -->
+                <div>
+                    <h4 class="footer-title">Navegación</h4>
+                    <div class="footer-links">
+                        <a href="#hero">Inicio</a>
+                        <a href="#about">Sobre mí</a>
+                        <a href="#projects">Proyectos</a>
+                        <a href="#experience">Experiencia</a>
+                        <a href="#skills">Tech Stack</a>
+                    </div>
+                </div>
+
+                <!-- Resources -->
+                <div>
+                    <h4 class="footer-title">Recursos</h4>
+                    <div class="footer-links">
+                        <a href="https://dosreisj445.github.io/CV/Jose%20Juan%20Dos%20Reis%20De%20Conceicao_Resume.pdf"
+                            target="_blank">
+                            <i data-feather="download" style="width:14px;height:14px;"></i> Descargar CV
+                        </a>
+                        <a href="https://github.com/dosreisj445" target="_blank">
+                            <i data-feather="github" style="width:14px;height:14px;"></i> GitHub
+                        </a>
+                        <a href="https://linkedin.com/in/" target="_blank">
+                            <i data-feather="linkedin" style="width:14px;height:14px;"></i> LinkedIn
+                        </a>
+                        <a href="#contact">
+                            <i data-feather="mail" style="width:14px;height:14px;"></i> Contacto
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Jose Juan Dos Reis. Hecho con código y dedicación.</p>
+            </div>
+        </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="./assets/js/script.js"></script>
     <script>
-        (function () {
-            emailjs.init("hKS31ZJNmsE3MiVgF");
-        })();
-
-        const form = document.getElementById("contact-form");
-        const button = document.getElementById("submit-btn");
-
-        form.addEventListener("submit", function (event) {
-            event.preventDefault();
-
-            button.disabled = true;
-            button.innerText = "Enviando...";
-
-            emailjs.sendForm("service_fr5lapo", "template_cekmv6j", this)
-                .then(function () {
-                    button.innerText = "Mensaje enviado 🚀";
-                    form.reset();
-
-                    setTimeout(() => {
-                        button.disabled = false;
-                        button.innerText = "Enviar Mensaje";
-                    }, 3000);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                    button.innerText = "Error 😢";
-                    button.disabled = false;
-                });
-        });
-    </script>
-
-    <script>
-        const header = document.querySelector('header');
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
-        const closeIcon = document.getElementById('close-icon');
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        // Toggle menú móvil
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('flex');
-            menuIcon.classList.toggle('hidden');
-            closeIcon.classList.toggle('hidden');
-        });
-
-        // Cerrar menú móvil al hacer click en un link
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth < 768) {
-                    mobileMenu.classList.add('hidden');
-                    mobileMenu.classList.remove('flex');
-                    menuIcon.classList.remove('hidden');
-                    closeIcon.classList.add('hidden');
-                }
-            });
-        });
-
-        // Efecto scroll en header
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-
-            // Resaltar sección activa
-            let current = '';
-            const sections = document.querySelectorAll('section');
-
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (window.scrollY >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active', 'bg-sky-400/10', 'text-sky-300');
-                if (link.getAttribute('data-section') === current) {
-                    link.classList.add('active', 'bg-sky-400/10', 'text-sky-300');
-                }
-            });
-        });
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+        feather.replace();
     </script>
 </body>
 
