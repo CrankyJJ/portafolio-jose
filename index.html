@@ -654,17 +654,16 @@
         form.addEventListener("submit", function (e) {
             e.preventDefault();
 
-            btn.disabled = true;
-            btn.innerText = "Enviando...";
-            status.innerText = "";
-
             emailjs.sendForm(
                 "service_m52sylb",
                 "template_w8tnivl",
                 this
             ).then(() => {
-                status.style.color = "green";
+                btn.innerText = "Enviando...";
                 status.innerText = "Mensaje enviado correctamente ✅";
+                setTimeout(() => {
+                    status.innerText = "";
+                }, 5000);
                 form.reset();
             }).catch((error) => {
                 status.style.color = "red";
@@ -672,7 +671,6 @@
                 console.error(error);
             }).finally(() => {
                 btn.disabled = false;
-                btn.innerText = "Enviar mensaje";
             });
 
         });
