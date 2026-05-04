@@ -48,7 +48,7 @@ Estructura de carpetas (resumen):
 
 Puedes ver el portafolio desplegado aquí:
 
-[Ver Portafolio en Vivo (GitHub Pages)](https://portafolio-jose-mu.vercel.app/)
+[Ver Portafolio en Vivo (Vercel)](https://portafolio-jose-mu.vercel.app/)
 
 ---
 
